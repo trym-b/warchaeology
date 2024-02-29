@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/nlnwa/warchaeology/cmd/aart"
-	"github.com/nlnwa/warchaeology/cmd/cat"
+	"github.com/nlnwa/warchaeology/cmd/cat_cmd"
 	"github.com/nlnwa/warchaeology/cmd/console"
 	"github.com/nlnwa/warchaeology/cmd/convert"
 	"github.com/nlnwa/warchaeology/cmd/dedup"
@@ -43,7 +43,7 @@ func NewCommand() *cobra.Command {
 
 	// Subcommands
 	cmd.AddCommand(ls.NewCommand())
-	cmd.AddCommand(cat.NewCommand())
+	cmd.AddCommand(cat_cmd.NewCommand())
 	cmd.AddCommand(validate.NewCommand())
 	cmd.AddCommand(console.NewCommand())
 	cmd.AddCommand(convert.NewCommand())
