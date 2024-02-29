@@ -49,6 +49,11 @@ jobs:
         run: go run ./script/release/md_docs.go
       - name: tree
         run: tree -a
+      - uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          compression-level: 9 # maximum compression
+          path: docs/
 
   build:
     runs-on: ubuntu-latest
