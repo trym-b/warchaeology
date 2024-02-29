@@ -23,9 +23,9 @@ type Config struct {
 	ShowPayload        bool
 }
 
-func ReadFile(c *Config, fileName string) {
-	wf, err := gowarc.NewWarcFileReader(fileName, c.Offset, gowarc.WithBufferTmpDir(viper.GetString(flag.TmpDir)))
-	defer func() { _ = wf.Close() }()
+func ListFiles(config *Config, fileName string) {
+	warcFileReader, err := gowarc.NewWarcFileReader(fileName, config.Offset, gowarc.WithBufferTmpDir(viper.GetString(flag.TmpDir)))
+	defer func() { _ = warcFileReader.Close() }()
 	if err != nil {
 		fmt.Printf("Error opening file: %v\n", err)
 		return
@@ -35,21 +35,21 @@ func ReadFile(c *Config, fileName string) {
 	count := 0
 
 	for {
-		wr, _, _, err := wf.Next()
+		warcRecord, _, _, err := warcFileReader.Next()
 		if err == io.EOF {
 			break
 		}
 		if err != nil {
-			_, _ = fmt.Fprintf(os.Stderr, "Error: %v, rec num: %v, Offset %v\n", err.Error(), strconv.Itoa(count), c.Offset)
+			_, _ = fmt.Fprintf(os.Stderr, "Error: %v, rec num: %v, Offset %v\n", err.Error(), strconv.Itoa(count), config.Offset)
 			break
 		}
 
-		if !c.Filter.Accept(wr) {
+		if !config.Filter.Accept(warcRecord) {
 			continue
 		}
 
 		// Find record number
-		if c.RecordNum > 0 && num < c.RecordNum {
+		if config.RecordNum > 0 && num < config.RecordNum {
 			num++
 			continue
 		}
@@ -57,15 +57,15 @@ func ReadFile(c *Config, fileName string) {
 		count++
 		out := os.Stdout
 
-		if c.ShowWarcHeader {
+		if config.ShowWarcHeader {
 			// Write WARC record version
-			_, err = fmt.Fprintf(out, "%v\r\n", wr.Version())
+			_, err = fmt.Fprintf(out, "%v\r\n", warcRecord.Version())
 			if err != nil {
 				fmt.Printf("Error: %v\n", err)
 			}
 
 			// Write WARC header
-			_, err = wr.WarcHeader().Write(out)
+			_, err = warcRecord.WarcHeader().Write(out)
 			if err != nil {
 				fmt.Printf("Error: %v\n", err)
 			}
@@ -77,31 +77,31 @@ func ReadFile(c *Config, fileName string) {
 			}
 		}
 
-		if c.ShowProtocolHeader {
-			if b, ok := wr.Block().(gowarc.ProtocolHeaderBlock); ok {
-				_, err = out.Write(b.ProtocolHeaderBytes())
+		if config.ShowProtocolHeader {
+			if headerBlock, ok := warcRecord.Block().(gowarc.ProtocolHeaderBlock); ok {
+				_, err = out.Write(headerBlock.ProtocolHeaderBytes())
 				if err != nil {
 					fmt.Printf("Error: %v\n", err)
 				}
 			}
 		}
 
-		if c.ShowPayload {
-			if pb, ok := wr.Block().(gowarc.PayloadBlock); ok {
-				r, err := pb.PayloadBytes()
+		if config.ShowPayload {
+			if payloadBlock, ok := warcRecord.Block().(gowarc.PayloadBlock); ok {
+				reader, err := payloadBlock.PayloadBytes()
 				if err != nil {
 					fmt.Printf("Error: %v\n", err)
 				}
-				_, err = io.Copy(out, r)
+				_, err = io.Copy(out, reader)
 				if err != nil {
 					fmt.Printf("Error: %v\n", err)
 				}
 			} else {
-				r, err := wr.Block().RawBytes()
+				reader, err := warcRecord.Block().RawBytes()
 				if err != nil {
 					fmt.Printf("Error: %v\n", err)
 				}
-				_, err = io.Copy(out, r)
+				_, err = io.Copy(out, reader)
 				if err != nil {
 					fmt.Printf("Error: %v\n", err)
 				}
@@ -114,7 +114,7 @@ func ReadFile(c *Config, fileName string) {
 			fmt.Printf("Error: %v\n", err)
 		}
 
-		if c.RecordCount > 0 && count >= c.RecordCount {
+		if config.RecordCount > 0 && count >= config.RecordCount {
 			break
 		}
 	}
