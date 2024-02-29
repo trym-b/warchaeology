@@ -67,6 +67,11 @@ The remaining records are written as is.`,
 				c.writerConf = wc
 			}
 
+			if viper.GetString(flag.NameGenerator) == "identity" {
+				c.writerConf.OneToOneWriter = true
+				viper.Set(flag.Concurrency, 1)
+			}
+
 			c.concurrency = viper.GetInt(flag.Concurrency)
 			c.minimumSizeGain = utils.ParseSizeInBytes(viper.GetString(flag.DedupSizeGain))
 			c.minWARCDiskFree = utils.ParseSizeInBytes(viper.GetString(flag.MinFreeDisk))
