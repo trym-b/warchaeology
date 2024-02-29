@@ -49,11 +49,12 @@ jobs:
         run: go run ./script/release/md_docs.go
       - name: tree
         run: tree -a
+      - name: compress with maximum compression
+        run: tar -czf docs.tar.gz docs/
       - uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          compression-level: 9 # maximum compression
-          path: docs/
+          path: docs.tar.gz
 
   build:
     runs-on: ubuntu-latest
