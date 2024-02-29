@@ -23,16 +23,17 @@ type config struct {
 	showPayload        bool
 }
 
-func listRecords(catConfig *config, fileName string) {
+func listRecords(catConfig *config, fileName string) ([]gowarc.WarcRecord, error) {
 	warcFileReader, err := gowarc.NewWarcFileReader(fileName, catConfig.offset, gowarc.WithBufferTmpDir(viper.GetString(flag.TmpDir)))
 	defer func() { _ = warcFileReader.Close() }()
 	if err != nil {
 		fmt.Printf("Error opening file: %v\n", err)
-		return
+		return nil, err
 	}
 
 	num := 0
 	count := 0
+	var warcRecords []gowarc.WarcRecord
 
 	for {
 		warcRecord, _, _, err := warcFileReader.Next()
@@ -44,9 +45,12 @@ func listRecords(catConfig *config, fileName string) {
 			break
 		}
 
-		if !catConfig.filter.Accept(warcRecord) {
-			continue
+		if catConfig.filter != nil {
+			if !catConfig.filter.Accept(warcRecord) {
+				continue
+			}
 		}
+		warcRecords = append(warcRecords, warcRecord)
 
 		// Find record number
 		if catConfig.recordNum > 0 && num < catConfig.recordNum {
@@ -119,4 +123,5 @@ func listRecords(catConfig *config, fileName string) {
 		}
 	}
 	_, _ = fmt.Fprintln(os.Stderr, "Count: ", count)
+	return warcRecords, nil
 }
