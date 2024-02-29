@@ -45,10 +45,21 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: 1.21
-      - name: Generate documentation
-        run: go run ./script/release/md_docs.go
+      #- name: Generate documentation
+      #  run: go run ./script/release/md_docs.go
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.119.0'
+      - name: Build
+        run: hugo --minify
       - name: tree
         run: tree -a
+      - name: Fix permissions
+        run: |
+          chmod -c -R +rX "_site/" | while read line; do
+            echo "::warning title=Invalid file permissions automatically fixed::$line"
+          done
       - name: compress with maximum compression
         run: tar -czf docs.tar.gz docs/
       - uses: actions/upload-artifact@v4
