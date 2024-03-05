@@ -5,35 +5,53 @@ on:
 
 permissions:
   contents: write
+  deployments: write
 
 jobs:
-  lint:
-    name: lint
+  benchmark:
+    name: Run Go benchmark example
     runs-on: ubuntu-latest
     steps:
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
         with:
-          go-version: '1.21'
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v4
-        with:
-          version: v1.56.1
+          go-version: "stable"
+      - name: Run benchmark
+        run: go test ./... -bench="Bench" -count 10 | tee output.txt
 
-  test:
-    name: go test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - name: tree
+        run: tree
+      - name: pwd
+        run: pwd
+      - name: ls
+        run: ls
+      - name: cat
+        run: cat output.txt
+      - name: Download previous benchmark data
+        uses: actions/cache@v4
+        with:
+          path: ./cache
+          key: ${{ runner.os }}-benchmark
+      - name: Store benchmarks result
+        uses: benchmark-action/github-action-benchmark@v1
         with:
           go-version: '1.21'
-      - name: Test
-        run: go test ./...
+      - name: Test with memory constraints
+        run: systemd-run --scope -p MemoryMax=10M --user go test --parallel 1 ./...
+      - uses: actions/upload-artifact@v4
+        with:
+          name: rpm-i386
+          path: dist/warchaeology-*i386.rpm
+          name: Benchmarks
+          tool: 'go'
+          output-file-path: output.txt
+          external-data-json-path: ./cache/benchmark-data.json
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          gh-pages-branch: gh-pages
+          auto-push: false
+          fail-on-alert: true
+          alert-threshold: "150%"
+
 
   build:
     runs-on: ubuntu-latest
@@ -95,3 +113,4 @@ jobs:
         with:
           name: rpm-i386
           path: dist/warchaeology-*i386.rpm
+

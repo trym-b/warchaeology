@@ -2,6 +2,7 @@ package cat
 
 import (
 	"errors"
+	"fmt"
 
 	"github.com/nlnwa/warchaeology/internal/filter"
 	"github.com/nlnwa/warchaeology/internal/flag"
@@ -64,6 +65,9 @@ func parseArgumentsAndCallCat(cmd *cobra.Command, args []string) error {
 		catConfig.showProtocolHeader = true
 		catConfig.showPayload = true
 	}
-	listRecords(catConfig, catConfig.fileName)
+	_, err := listRecords(catConfig, catConfig.fileName)
+	if err != nil {
+		return fmt.Errorf("Failed to list records, original error: '%v'", err)
+	}
 	return nil
 }
