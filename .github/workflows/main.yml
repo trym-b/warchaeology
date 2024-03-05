@@ -35,6 +35,20 @@ jobs:
       - name: Test
         run: go test ./...
 
+  test-with-memory-limit:
+    name: go test with memory limit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+      - name: Test with memory constraints
+        run: systemd-run --scope -p MemoryMax=10M --user go test --parallel 1 ./...
+
+
   build:
     runs-on: ubuntu-latest
     name: Build
