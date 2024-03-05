@@ -46,7 +46,7 @@ jobs:
         with:
           go-version: '1.21'
       - name: Test with memory constraints
-        run: systemd-run --scope -p MemoryMax=1M --user go test --parallel 1 ./...
+        run: systemd-run --scope --property MemoryMax=1M --user go test --verbose --parallel 1 ./...
 
 
   build:
