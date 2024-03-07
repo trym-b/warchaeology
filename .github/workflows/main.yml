@@ -7,23 +7,8 @@ permissions:
   contents: write
 
 jobs:
-  lint:
-    name: lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.21'
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: golangci-lint
-        uses: golangci/golangci-lint-action@v4
-        with:
-          version: v1.56.1
-
-  test:
-    name: go test
+  publish:
+    name: Publish
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -32,43 +17,13 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.21'
-      - name: Test
-        run: go test ./...
-
-  test-with-memory-limit:
-    name: go test with memory limit
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - name: gobenchdata publish
+        uses: bobheadxi/gobenchdata@v1
         with:
-          go-version: '1.21'
-      - name: Test with memory constraints
-        run: systemd-run --scope --property MemoryMax=1M --user go test --verbose --parallel 1 ./...
-
-
-  build:
-    runs-on: ubuntu-latest
-    name: Build
-    steps:
-      - name: Detect snapshot
-        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
-        run: echo "flags=--snapshot" >> $GITHUB_ENV
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Set up Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: 1.21
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v5
-        with:
-          distribution: goreleaser
-          version: v1.18.2
-          args: release --clean ${{ env.flags }}
+          PRUNE_COUNT: 0
+          CHECKS: true
+          PUBLISH_BRANCH: github-pages-test-branch
+          PUBLISH: false
+          BENCHMARKS_OUT: myBenchMarkResults.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
