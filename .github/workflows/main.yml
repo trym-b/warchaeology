@@ -5,25 +5,43 @@ on:
 
 permissions:
   contents: write
+  deployments: write
 
 jobs:
-  publish:
-    name: Publish
+  benchmark:
+    name: Run Go benchmark example
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Setup Go
-        uses: actions/setup-go@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
         with:
-          go-version: '1.21'
-      - name: gobenchdata publish
-        uses: bobheadxi/gobenchdata@v1
+          go-version: "stable"
+      - name: Run benchmark
+        run: go test -bench 'Benchmark' | tee output.txt
+
+      - name: Store benchmark result
+        uses: benchmark-action/github-action-benchmark@v1
         with:
-          PRUNE_COUNT: 0
-          CHECKS: true
-          PUBLISH_BRANCH: github-pages-test-branch
-          PUBLISH: false
-          BENCHMARKS_OUT: myBenchMarkResults.json
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          name: Go Benchmark
+          tool: 'go'
+          output-file-path: cmd/cat/output.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          auto-push: true
+          # Show alert with commit comment on detecting possible performance regression
+          alert-threshold: '200%'
+          comment-on-alert: true
+          fail-on-alert: true
+
+      - name: Store benchmark result - separate results repo
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: Go Benchmark
+          tool: 'go'
+          output-file-path: cmd/cat/output.txt
+          github-token: ${{ secrets.BENCHMARK_ACTION_BOT_TOKEN }}
+          auto-push: true
+          # Show alert with commit comment on detecting possible performance regression
+          alert-threshold: '200%'
+          comment-on-alert: true
+          fail-on-alert: true
+          gh-repository: 'github.com/benchmark-action/github-action-benchmark-results'
