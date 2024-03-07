@@ -1,21 +1,24 @@
-package main_test
+package main
 
 import (
-	"os"
 	"testing"
-
-	"github.com/nlnwa/warchaeology/cmd"
 )
 
-func TestEmptyCommandPrompt(t *testing.T) {
-	stdout_backup := os.Stdout
-	stderr_backup := os.Stderr
-	os.Stdout = nil
-	os.Stderr = nil
+func BenchmarkFib10(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(10)
+	}
+}
 
-	shell := cmd.NewCommand()
-	_ = shell.Execute()
+func BenchmarkFib20(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+}
 
-	os.Stdout = stdout_backup
-	os.Stderr = stderr_backup
+func BenchmarkFib20WithAuxMetric(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+	b.ReportMetric(4.0, "auxMetricUnits")
 }
