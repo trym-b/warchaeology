@@ -21,6 +21,10 @@ jobs:
 
       - name: tree
         run: tree
+      - name: pwd
+        run: pwd
+      - name: ls
+        run: ls
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
