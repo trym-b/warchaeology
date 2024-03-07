@@ -25,6 +25,8 @@ jobs:
         run: pwd
       - name: ls
         run: ls
+      - name: cat
+        run: cat output.txt
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:
