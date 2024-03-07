@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1709813319404,
+  "lastUpdate": 1709813498331,
   "repoUrl": "https://github.com/nlnwa/warchaeology",
   "entries": {
     "Benchmark results": [
@@ -108,6 +108,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30163 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "committer": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "distinct": true,
+          "id": "6c4661f2dc57c92f280070da40a90e42f7e5f89e",
+          "message": "run all benchmarks",
+          "timestamp": "2024-03-07T13:10:27+01:00",
+          "tree_id": "41582486222cf6dd55e6cba51e805d4d0f03e94a",
+          "url": "https://github.com/nlnwa/warchaeology/commit/6c4661f2dc57c92f280070da40a90e42f7e5f89e"
+        },
+        "date": 1709813497813,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 311.8,
+            "unit": "ns/op",
+            "extra": "3790442 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39692,
+            "unit": "ns/op",
+            "extra": "30345 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39599,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30300 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39599,
+            "unit": "ns/op",
+            "extra": "30300 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30300 times\n4 procs"
           }
         ]
       }
