@@ -1,6 +1,9 @@
 package cat
 
-import "testing"
+import (
+	"testing"
+	"time"
+)
 
 func testDir() string {
 	return "../../test-data"
@@ -24,6 +27,7 @@ func testDir() string {
 
 func Fib(u uint) uint {
 	if u <= 1 {
+		time.Sleep(10 * time.Second)
 		return 1
 	}
 	return Fib(u-2) + Fib(u-1)
