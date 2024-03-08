@@ -27,7 +27,6 @@ func testDir() string {
 
 func Fib(u uint) uint {
 	if u <= 1 {
-		time.Sleep(10 * time.Second)
 		return 1
 	}
 	return Fib(u-2) + Fib(u-1)
@@ -37,6 +36,7 @@ func BenchmarkFib10(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		var _ = Fib(10)
 	}
+	time.Sleep(1 * time.Second)
 }
 
 func BenchmarkFib20(b *testing.B) {
