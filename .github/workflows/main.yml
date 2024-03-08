@@ -34,7 +34,7 @@ jobs:
           tool: 'go'
           output-file-path: output.txt
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          gh-pages-branch: testing-gh-pages
+          gh-pages-branch: gh-pages
           auto-push: true
           # Show alert with commit comment on detecting possible performance regression
           #alert-threshold: '200%'
