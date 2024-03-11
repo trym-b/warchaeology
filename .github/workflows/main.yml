@@ -132,7 +132,7 @@ jobs:
       - name: make dummy dir
         run: mkdir -p ./previous/benchmarks
       - name: create dummy file
-        run: echo '{}' > ./previous/benchmarks/results.json
+        run: echo ' ' > ./previous/benchmarks/results.json
       #- name: Download previous benchmark data
       #  uses: actions/cache@v4
       #  with:
@@ -156,6 +156,8 @@ jobs:
           auto-push: false
           fail-on-alert: true
           alert-threshold: "150%"
+      - name: cat results.json
+        run: cat ./previous/benchmarks/results.json
   #publish-benchmarks:
   #  name: Publish benchmarks
   #  runs-on: ubuntu-latest
