@@ -139,7 +139,7 @@ jobs:
       matrix:
         os: [ubuntu-22.04]
     runs-on: ${{ matrix.os }}
-    if: github.ref_name == github.event.repository.default_branch
+    # if: github.ref_name == github.event.repository.default_branch
     needs:
       - benchmark
       - build
@@ -150,7 +150,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ matrix.os }}-benchmark-results
-          path: benchmark-result.txt
+      - name: cat benchmark results
+        run: cat benchmark-result.txt
       - name: Publish benchmark results
         uses: benchmark-action/github-action-benchmark@v1
         with:
