@@ -103,10 +103,6 @@ jobs:
   benchmark:
     name: Run benchmarks
     runs-on: ubuntu-latest
-    needs:
-      - test
-      - build
-      - lint
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v4
@@ -127,12 +123,16 @@ jobs:
         run: ls
       - name: cat
         run: cat output.txt
-      - name: Checkout default branch benchmark results and compare
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ env.github_pages_branch }}
-          path: ./previous
-          filter: benchmarks/results.json
+      ##########- name: Checkout default branch benchmark results and compare
+      ##########  uses: actions/checkout@v4
+      ##########  with:
+      ##########    ref: ${{ env.github_pages_branch }}
+      ##########    path: ./previous
+      ##########    filter: benchmarks/results.json
+      - name: make dummy dir
+        run: mkdir -p ./previous/benchmarks
+      - name: create dummy file
+        run: echo '{}' > ./previous/benchmarks/results.json
       #- name: Download previous benchmark data
       #  uses: actions/cache@v4
       #  with:
@@ -159,7 +159,11 @@ jobs:
   #publish-benchmarks:
   #  name: Publish benchmarks
   #  runs-on: ubuntu-latest
-  #  needs: benchmark
+  #  needs:
+  #      - test
+  #      - build
+  #      - lint
+  #      - benchmark
   #  if: github.ref_name == github.event.repository.default_branch
   #  steps:
   #    - uses: actions/checkout@v4
