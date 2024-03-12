@@ -36,6 +36,7 @@ jobs:
           output-file-path: benchmark-result.txt
           benchmark-data-dir-path: benchmarks/${{ matrix.os }}
           auto-push: true
+          gh-pages-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           fail-on-alert: true
           alert-threshold: "150%"
