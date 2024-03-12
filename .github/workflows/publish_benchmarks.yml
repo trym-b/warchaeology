@@ -52,6 +52,12 @@ jobs:
           alert-threshold: "150%"
       - name: tree
         run: tree
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+      - name: tree
+        run: tree
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           # Optional. Commit message for the created commit.
