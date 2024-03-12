@@ -46,6 +46,10 @@ jobs:
         run: mkdir -p benchmarks/${{ matrix.os }}/
       - name: create dummy file for previous benchmark results
         run: echo '' > benchmarks/${{ matrix.os }}/results.json
+      - name: Code Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: benchmark-results
       - name: Create benchmark results json
         uses: benchmark-action/github-action-benchmark@v1
         with:
