@@ -28,6 +28,33 @@ jobs:
           go-version: "1.21"
       - name: Run benchmarks
         run: go test ./... -bench="Bench" -count 10 | tee benchmark-result.txt
+      - name: Create benchmark results json
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: Go Benchmark
+          tool: 'go'
+          output-file-path: benchmark-result.txt
+          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
+          auto-push: false
+          fail-on-alert: true
+          alert-threshold: "150%"
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          # Optional. Commit message for the created commit.
+          # Defaults to "Apply automatic changes"
+          commit_message: "Benchmark results for ${{ matrix.os }}"
+
+          # Optional. Local and remote branch name where commit is going to be pushed
+          #  to. Defaults to the current branch.
+          #  You might need to set `create_branch: true` if the branch does not exist.
+          branch: benchmark-results
+
+          # Optional glob pattern of files which should be added to the commit
+          # Defaults to all (.)
+          # See the `pathspec`-documentation for git
+          # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
+          # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
+          file_pattern: 'benchmarks/**'
       - name: Publish benchmark results
         uses: benchmark-action/github-action-benchmark@v1
         with:
