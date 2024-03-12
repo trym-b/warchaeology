@@ -36,29 +36,29 @@ jobs:
           output-file-path: benchmark-result.txt
           benchmark-data-dir-path: benchmarks/${{ matrix.os }}
           auto-push: true
-          gh-pages-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           fail-on-alert: true
           alert-threshold: "150%"
 
+      - name: make dummy dir for previous benchmark results
+        run: mkdir -p benchmarks/${{ matrix.os }}/
+      - name: create dummy file for previous benchmark results
+        run: echo '' > benchmarks/${{ matrix.os }}/results.json
       - name: Create benchmark results json
         uses: benchmark-action/github-action-benchmark@v1
         with:
           name: Go Benchmark
           tool: 'go'
           output-file-path: benchmark-result.txt
-          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
+          #benchmark-data-dir-path: benchmarks/${{ matrix.os }}
+          external-data-json-path: benchmarks/${{ matrix.os }}/results.json
           auto-push: false
           fail-on-alert: true
           alert-threshold: "150%"
       - name: tree
         run: tree
-      - name: Checkout gh-pages
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-      - name: tree
-        run: tree
+      - name: cat benchmark results
+        run: cat benchmarks/${{ matrix.os }}/results.json
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           # Optional. Commit message for the created commit.
