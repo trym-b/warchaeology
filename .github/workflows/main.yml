@@ -133,32 +133,33 @@ jobs:
           name: rpm-i386
           path: dist/warchaeology-*i386.rpm
 
-  publish-benchmarks:
-    name: Publish benchmarks
-    strategy:
-      matrix:
-        os: [ubuntu-22.04]
-    runs-on: ${{ matrix.os }}
-    # if: github.ref_name == github.event.repository.default_branch
-    needs:
-      - benchmark
-      - build
-      - test
-      - lint
-    steps:
-      - name: Download benchmark results
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ matrix.os }}-benchmark-results
-      - name: cat benchmark results
-        run: cat benchmark-result.txt
-      - name: Publish benchmark results
-        uses: benchmark-action/github-action-benchmark@v1
-        with:
-          name: Benchmarks
-          tool: 'go'
-          output-file-path: benchmark-result.txt
-          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
-          auto-push: true
-          fail-on-alert: true
-          alert-threshold: "150%"
+#  publish-benchmarks:
+#    name: Publish benchmarks
+#    strategy:
+#      matrix:
+#        os: [ubuntu-22.04]
+#    runs-on: ${{ matrix.os }}
+#    # if: github.ref_name == github.event.repository.default_branch
+#    needs:
+#      - benchmark
+#      - build
+#      - test
+#      - lint
+#    steps:
+#      - name: Download benchmark results
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: ${{ matrix.os }}-benchmark-results
+#      - name: cat benchmark results
+#        run: cat benchmark-result.txt
+#      - name: Publish benchmark results
+#        uses: benchmark-action/github-action-benchmark@v1
+#        with:
+#          name: Benchmarks
+#          tool: 'go'
+#          output-file-path: benchmark-result.txt
+#          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
+#          auto-push: true
+#          fail-on-alert: true
+#          alert-threshold: "150%"
+#
