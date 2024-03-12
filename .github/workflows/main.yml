@@ -55,12 +55,12 @@ jobs:
         with:
           name: ${{ matrix.os }}-benchmark-results
           path: benchmark-result.txt
-      # TODO: immediately after merging this, the following code should be
-      # replaced by downloading the previous benchmark results instead
-      - name: make dummy dir
-        run: mkdir -p ./previous/benchmarks/${{ matrix.os }}/
-      - name: create dummy file
-        run: echo ' ' > ./previous/benchmarks/${{ matrix.os }}/results.json
+      - name: Checkout default branch benchmark results and compare
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.github_pages_branch }}
+          path: ./previous
+          filter: benchmarks/${{ matrix.os }}/results.json
       - name: Compare benchmark results
         uses: benchmark-action/github-action-benchmark@v1
         with:
