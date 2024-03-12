@@ -65,6 +65,12 @@ jobs:
         run: tree
       - name: cat benchmark results
         run: cat benchmarks/${{ matrix.os }}/results.json
+      - name: Code Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: benchmark-results
+      - name: git add benchmark results
+        run: git add benchmarks/${{ matrix.os }}/results.json
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           # Optional. Commit message for the created commit.
