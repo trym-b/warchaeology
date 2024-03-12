@@ -28,6 +28,18 @@ jobs:
           go-version: "1.21"
       - name: Run benchmarks
         run: go test ./... -bench="Bench" -count 10 | tee benchmark-result.txt
+      - name: Publish benchmark results
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: Go Benchmark
+          tool: 'go'
+          output-file-path: benchmark-result.txt
+          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
+          auto-push: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          fail-on-alert: true
+          alert-threshold: "150%"
+
       - name: Create benchmark results json
         uses: benchmark-action/github-action-benchmark@v1
         with:
@@ -38,6 +50,8 @@ jobs:
           auto-push: false
           fail-on-alert: true
           alert-threshold: "150%"
+      - name: tree
+        run: tree
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           # Optional. Commit message for the created commit.
@@ -55,14 +69,3 @@ jobs:
           # - https://git-scm.com/docs/git-add#Documentation/git-add.txt-ltpathspecgt82308203
           # - https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec
           file_pattern: 'benchmarks/**'
-      - name: Publish benchmark results
-        uses: benchmark-action/github-action-benchmark@v1
-        with:
-          name: Go Benchmark
-          tool: 'go'
-          output-file-path: benchmark-result.txt
-          benchmark-data-dir-path: benchmarks/${{ matrix.os }}
-          auto-push: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          fail-on-alert: true
-          alert-threshold: "150%"
