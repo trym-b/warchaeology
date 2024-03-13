@@ -69,7 +69,7 @@ jobs:
       - name: git status after benchmark results
         run: git status
       - name: git stash benchmark results
-        run: git stash benchmarks/${{ matrix.os }}/results.json
+        run: git stash --include-untracked
       - name: Code Checkout
         uses: actions/checkout@v4
         with:
