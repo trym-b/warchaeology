@@ -72,6 +72,7 @@ jobs:
       #- name: git add benchmark results
       #  run: git add benchmarks/${{ matrix.os }}/results.json
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+        id: commit-and-push
         with:
           # The arguments for the `git add` command (see the paragraph below for more info)
           # Default: '.'
@@ -129,7 +130,7 @@ jobs:
           push: true
       - name: fail if outputs.pushed is not true
         run: |
-          if [ "${{ steps.commit.outputs.pushed }}" != "true" ]; then
+          if [ "${{ steps.commit-and-push.outputs.pushed }}" != "true" ]; then
             echo "Commit failed"
             exit 1
           fi
