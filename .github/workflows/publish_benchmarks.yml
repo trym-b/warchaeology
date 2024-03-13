@@ -66,11 +66,15 @@ jobs:
         run: tree
       - name: cat benchmark results
         run: cat benchmarks/${{ matrix.os }}/results.json
+      - name: git status after benchmark results
+        run: git status
       - name: Code Checkout
         uses: actions/checkout@v4
         with:
           ref: benchmark-results
           clean: false
+      - name: git status after checkout
+        run: git status
       - name: tree
         run: tree
       #- name: git add benchmark results
