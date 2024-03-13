@@ -71,6 +71,8 @@ jobs:
         with:
           ref: benchmark-results
           clean: false
+      - name: tree
+        run: tree
       #- name: git add benchmark results
       #  run: git add benchmarks/${{ matrix.os }}/results.json
       - uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
