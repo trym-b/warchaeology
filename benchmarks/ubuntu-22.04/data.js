@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1710318007922,
+  "lastUpdate": 1710318248154,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -2770,6 +2770,90 @@ window.BENCHMARK_DATA = {
           {
             "name": "BenchmarkDummy",
             "value": 1000054502,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "committer": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "distinct": true,
+          "id": "7ccb6d964deaa2d43d4969f8d792f3b5cab0bf66",
+          "message": "add: empty file creation",
+          "timestamp": "2024-03-13T09:23:31+01:00",
+          "tree_id": "25f234c2a93d34cb110f7c145bb552556c2086fb",
+          "url": "https://github.com/trym-b/warchaeology/commit/7ccb6d964deaa2d43d4969f8d792f3b5cab0bf66"
+        },
+        "date": 1710318247534,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000144888,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000106391,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000099359,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000995762,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000083738,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000107730,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000073783,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000112551,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000095677,
+            "unit": "ns/op",
+            "extra": "1 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkDummy",
+            "value": 1000081374,
             "unit": "ns/op",
             "extra": "1 times\n4 procs"
           }
