@@ -76,7 +76,7 @@ jobs:
           ref: benchmark-results
           clean: false
       - name: git stash pop benchmark results
-        run: git stash pop
+        run: git stash show -p | git apply && git stash drop
       - name: git status after checkout
         run: git status
       - name: tree
