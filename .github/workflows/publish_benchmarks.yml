@@ -68,11 +68,15 @@ jobs:
         run: cat benchmarks/${{ matrix.os }}/results.json
       - name: git status after benchmark results
         run: git status
+      - name: git stash benchmark results
+        run: git stash benchmarks/${{ matrix.os }}/results.json
       - name: Code Checkout
         uses: actions/checkout@v4
         with:
           ref: benchmark-results
           clean: false
+      - name: git stash pop benchmark results
+        run: git stash pop
       - name: git status after checkout
         run: git status
       - name: tree
