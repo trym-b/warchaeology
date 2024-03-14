@@ -1,5 +1,5 @@
 {
-  "lastUpdate": 1710329523472,
+  "lastUpdate": 1710399567671,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -7,83 +7,29 @@
         "commit": {
           "author": {
             "email": "trym.bremnes@gmail.com",
-            "name": "Trym bremnes",
+            "name": "Trym Bremnes",
             "username": "trym-b"
           },
           "committer": {
-            "email": "trym.bremnes@gmail.com",
-            "name": "Trym bremnes",
-            "username": "trym-b"
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
           },
           "distinct": true,
-          "id": "90924be9fff90e81779b1489f67c6acb80eaaa77",
-          "message": "download",
-          "timestamp": "2024-03-13T09:55:11+01:00",
-          "tree_id": "3a0247541254f132c0c206700aefced0fc8af648",
-          "url": "https://github.com/trym-b/warchaeology/commit/90924be9fff90e81779b1489f67c6acb80eaaa77"
+          "id": "9a92906ac8914851a54b638ac789f97188a60152",
+          "message": "Merge pull request #95 from nlnwa/dependabot/go_modules/google.golang.org/protobuf-1.33.0\n\nbuild(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0",
+          "timestamp": "2024-03-14T07:57:04+01:00",
+          "tree_id": "5214911c7882e8ba8e20e5834c8cf67efaddbd39",
+          "url": "https://github.com/trym-b/warchaeology/commit/9a92906ac8914851a54b638ac789f97188a60152"
         },
-        "date": 1710329523471,
+        "date": 1710399567670,
         "tool": "go",
         "benches": [
           {
             "name": "BenchmarkDummy",
-            "value": 1000119246,
+            "value": 188.5,
             "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1001000935,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000227240,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000069919,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000068650,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000066822,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000429655,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000064193,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000073196,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
-          },
-          {
-            "name": "BenchmarkDummy",
-            "value": 1000067283,
-            "unit": "ns/op",
-            "extra": "1 times\n4 procs"
+            "extra": "6337300 times\n4 procs"
           }
         ]
       }
