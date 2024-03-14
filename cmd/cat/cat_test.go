@@ -14,8 +14,8 @@ func Fib(u uint) uint {
 func BenchmarkFib10(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		var _ = Fib(10)
+		time.Sleep(1 * time.Second)
 	}
-	time.Sleep(1 * time.Second)
 }
 
 func BenchmarkFib20(b *testing.B) {
