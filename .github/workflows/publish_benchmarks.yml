@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - ci/auto-commit-to-benchmark-results-branch
 
 permissions:
   # deployments permission to deploy GitHub pages website
