@@ -2,7 +2,6 @@ package cat
 
 import (
 	"testing"
-	"time"
 )
 
 func Fib(u uint) uint {
@@ -14,7 +13,10 @@ func Fib(u uint) uint {
 func BenchmarkFib10(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		var _ = Fib(10)
-		time.Sleep(20 * time.Second)
+		//time.Sleep(20 * time.Second)
+		for j := 0; j < 100000000; j++ {
+			_ = j
+		}
 	}
 }
 
