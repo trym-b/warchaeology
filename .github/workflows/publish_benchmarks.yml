@@ -30,7 +30,7 @@ jobs:
         with:
           go-version: "1.21"
       - name: Run benchmarks
-        run: go test ./... -bench="Bench" | tee benchmark-result.txt
+        run: go test ./... -bench="Bench" -count 10 | tee benchmark-result.txt
       - name: Publish benchmark results
         uses: benchmark-action/github-action-benchmark@v1
         with:
