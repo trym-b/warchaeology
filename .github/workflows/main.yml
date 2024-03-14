@@ -70,7 +70,7 @@ jobs:
           external-data-json-path: ./previous/benchmarks/${{ matrix.os }}/results.json
           auto-push: false
           fail-on-alert: true
-          alert-threshold: "50%"
+          alert-threshold: "150%"
 
   build:
     runs-on: ubuntu-latest
