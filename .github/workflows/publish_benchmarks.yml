@@ -67,6 +67,11 @@ jobs:
         with:
           name: ${{ matrix.os }}-benchmark-results
           path: benchmarks/${{ matrix.os }}/
+      - uses: actions/cache/save@v3
+        id: cache
+        with:
+          path: benchmarks/${{ matrix.os }}/results.json
+          key: benchmarks-${{ matrix.os }}
       - name: Commit and push benchmark results
         uses: EndBug/add-and-commit@v9
         id: commit-and-push
