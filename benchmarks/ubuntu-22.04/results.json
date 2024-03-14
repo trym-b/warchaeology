@@ -1,5 +1,5 @@
 {
-  "lastUpdate": 1710399567671,
+  "lastUpdate": 1710399725694,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -11,25 +11,25 @@
             "username": "trym-b"
           },
           "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym Bremnes",
+            "username": "trym-b"
           },
           "distinct": true,
-          "id": "9a92906ac8914851a54b638ac789f97188a60152",
-          "message": "Merge pull request #95 from nlnwa/dependabot/go_modules/google.golang.org/protobuf-1.33.0\n\nbuild(deps): bump google.golang.org/protobuf from 1.31.0 to 1.33.0",
-          "timestamp": "2024-03-14T07:57:04+01:00",
-          "tree_id": "5214911c7882e8ba8e20e5834c8cf67efaddbd39",
-          "url": "https://github.com/trym-b/warchaeology/commit/9a92906ac8914851a54b638ac789f97188a60152"
+          "id": "9c1cebf7f6474547c99417d8dbd11fd66afc5685",
+          "message": "increase sleep",
+          "timestamp": "2024-03-14T08:01:35+01:00",
+          "tree_id": "26f26d688c191bb299c53c4c4e8332a00d944b89",
+          "url": "https://github.com/trym-b/warchaeology/commit/9c1cebf7f6474547c99417d8dbd11fd66afc5685"
         },
-        "date": 1710399567670,
+        "date": 1710399725693,
         "tool": "go",
         "benches": [
           {
             "name": "BenchmarkDummy",
-            "value": 188.5,
+            "value": 189.2,
             "unit": "ns/op",
-            "extra": "6337300 times\n4 procs"
+            "extra": "6329367 times\n4 procs"
           }
         ]
       }
