@@ -71,6 +71,8 @@ jobs:
           auto-push: false
           fail-on-alert: true
           alert-threshold: "150%"
+      - name: cat benchmark results
+        run: cat ./previous/benchmarks/${{ matrix.os }}/results.json
 
   build:
     runs-on: ubuntu-latest
