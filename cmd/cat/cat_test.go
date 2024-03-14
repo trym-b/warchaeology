@@ -2,19 +2,28 @@ package cat
 
 import (
 	"testing"
-	"time"
 )
 
-func BenchmarkDummy(b *testing.B) {
-	// This is a dummy test, it should be replaced with something more
-	// meaningful in a later commit
+func Fib(u uint) uint {
+	if u <= 1 {
+		return 1
+	}
+	return Fib(u-2) + Fib(u-1)
+}
+func BenchmarkFib10(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		myFunc()
+		var _ = Fib(10)
 	}
 }
 
-func myFunc() {
-	// This is a dummy function, it should be replaced with something more
-	// meaningful in a later commit
-	time.Sleep(1 * time.Second)
+func BenchmarkFib20(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+}
+func BenchmarkFib20WithAuxMetric(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		var _ = Fib(20)
+	}
+	b.ReportMetric(4.0, "auxMetricUnits")
 }
