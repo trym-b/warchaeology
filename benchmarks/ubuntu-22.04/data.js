@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1710405078511,
+  "lastUpdate": 1710405237469,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -3504,6 +3504,330 @@ window.BENCHMARK_DATA = {
             "value": 187.3,
             "unit": "ns/op",
             "extra": "6374132 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym Bremnes",
+            "username": "trym-b"
+          },
+          "committer": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym Bremnes",
+            "username": "trym-b"
+          },
+          "distinct": true,
+          "id": "90c2317ebf08e0161fe0ca14d74624983a29ccd8",
+          "message": "test",
+          "timestamp": "2024-03-14T09:32:48+01:00",
+          "tree_id": "6ecadea8622031c7ed90cf8b4da4dc739bf0976b",
+          "url": "https://github.com/trym-b/warchaeology/commit/90c2317ebf08e0161fe0ca14d74624983a29ccd8"
+        },
+        "date": 1710405236812,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 310.3,
+            "unit": "ns/op",
+            "extra": "3819640 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 310.3,
+            "unit": "ns/op",
+            "extra": "3882844 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 312,
+            "unit": "ns/op",
+            "extra": "3884419 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 311.1,
+            "unit": "ns/op",
+            "extra": "3874809 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 310.4,
+            "unit": "ns/op",
+            "extra": "3880119 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 311.2,
+            "unit": "ns/op",
+            "extra": "3888639 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 314.8,
+            "unit": "ns/op",
+            "extra": "3883332 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 310.6,
+            "unit": "ns/op",
+            "extra": "3877806 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 311.1,
+            "unit": "ns/op",
+            "extra": "3882358 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib10",
+            "value": 311,
+            "unit": "ns/op",
+            "extra": "3879266 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39639,
+            "unit": "ns/op",
+            "extra": "30121 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39645,
+            "unit": "ns/op",
+            "extra": "30247 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39658,
+            "unit": "ns/op",
+            "extra": "30154 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39756,
+            "unit": "ns/op",
+            "extra": "30362 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39674,
+            "unit": "ns/op",
+            "extra": "30343 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 40031,
+            "unit": "ns/op",
+            "extra": "30312 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39816,
+            "unit": "ns/op",
+            "extra": "30320 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39656,
+            "unit": "ns/op",
+            "extra": "30384 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39828,
+            "unit": "ns/op",
+            "extra": "30343 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 41068,
+            "unit": "ns/op",
+            "extra": "28567 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39670,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39670,
+            "unit": "ns/op",
+            "extra": "30315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30315 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39644,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30421 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39644,
+            "unit": "ns/op",
+            "extra": "30421 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30421 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39655,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30405 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39655,
+            "unit": "ns/op",
+            "extra": "30405 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30405 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39723,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39723,
+            "unit": "ns/op",
+            "extra": "30424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30424 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39729,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39729,
+            "unit": "ns/op",
+            "extra": "30337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30337 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39680,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39680,
+            "unit": "ns/op",
+            "extra": "30346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30346 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39700,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30354 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39700,
+            "unit": "ns/op",
+            "extra": "30354 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30354 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39704,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30349 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39704,
+            "unit": "ns/op",
+            "extra": "30349 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30349 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39631,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39631,
+            "unit": "ns/op",
+            "extra": "30364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30364 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39644,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39644,
+            "unit": "ns/op",
+            "extra": "30334 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30334 times\n4 procs"
           }
         ]
       }
