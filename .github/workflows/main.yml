@@ -48,10 +48,19 @@ jobs:
           go-version: "1.21"
       - name: Run benchmark
         run: go test ./... -bench="Bench" -count 10 | tee benchmark-result.txt
-      - uses: actions/upload-artifact@v4
+      ####- uses: actions/upload-artifact@v4
+      ####  with:
+      ####    name: ${{ matrix.os }}-benchmark-results
+      ####    path: benchmark-result.txt
+      - name: Restore cached Primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v4
         with:
-          name: ${{ matrix.os }}-benchmark-results
-          path: benchmark-result.txt
+          path: |
+            ./previous/
+          key: ${{ runner.os }}-primes
+      - name: tree
+        run: tree
       # TODO: immediately after merging this, the following code should be
       # replaced by downloading the previous benchmark results instead
       - name: make dummy dir
@@ -68,6 +77,15 @@ jobs:
           auto-push: false
           fail-on-alert: true
           alert-threshold: "150%"
+      - name: tree
+        run: tree
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ./previous/benchmarks/${{ matrix.os }}/results.json
+          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
 
   build:
     runs-on: ubuntu-latest
