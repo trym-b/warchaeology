@@ -63,10 +63,10 @@ jobs:
         run: tree
       # TODO: immediately after merging this, the following code should be
       # replaced by downloading the previous benchmark results instead
-      - name: make dummy dir
-        run: mkdir --parents ./previous/benchmarks/${{ matrix.os }}/
-      - name: create dummy file
-        run: echo ' ' > ./previous/benchmarks/${{ matrix.os }}/results.json
+      #- name: make dummy dir
+      #  run: mkdir --parents ./previous/benchmarks/${{ matrix.os }}/
+      #- name: create dummy file
+      #  run: echo ' ' > ./previous/benchmarks/${{ matrix.os }}/results.json
       - name: Compare benchmark results
         uses: benchmark-action/github-action-benchmark@v1
         with:
