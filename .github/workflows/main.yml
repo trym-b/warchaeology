@@ -58,7 +58,7 @@ jobs:
         with:
           path: |
             ./previous/
-          key: ${{ runner.os }}-primes
+          key: ${{ runner.os }}-${{ hashFiles('**/*') }}
       - name: tree
         run: tree
       # TODO: immediately after merging this, the following code should be
@@ -85,7 +85,7 @@ jobs:
         with:
           path: |
             ./previous/benchmarks/${{ matrix.os }}/results.json
-          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
+          key: ${{ runner.os }}-${{ hashFiles('**/*') }}
 
   build:
     runs-on: ubuntu-latest
