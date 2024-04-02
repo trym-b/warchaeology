@@ -13,6 +13,9 @@ permissions:
   # contents permission to update benchmark contents in gh-pages branch
   contents: write
 
+env:
+  DEFAULT_BRANCH: test/benchmark-windows
+
 jobs:
   publish-benchmarks:
     name: Publish benchmark results
@@ -27,7 +30,7 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v4
         with:
-          ref: test/benchmark-windows
+          ref: ${{ env.DEFAULT_BRANCH }}
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
@@ -87,5 +90,9 @@ jobs:
           new_branch: benchmark-results
           pathspec_error_handling: exitImmediately
           push: true
+      - name: Code Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.DEFAULT_BRANCH }}
       - name: Verify that a commit has been pushed
         run: python continuous-integration/check_push_status.py --push-status "${{ steps.commit-and-push.outputs.pushed }}"
