@@ -29,6 +29,10 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.21"
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - name: Run benchmarks
         run: go test ./... -bench="Bench" | tee benchmark-result.txt
       - name: Publish benchmark results
@@ -44,7 +48,7 @@ jobs:
           alert-threshold: "150%"
 
       - name: Create benchmark result directory
-        run: mkdir --parents benchmarks/${{ matrix.os }}/
+        run: python continuous-integration/create_dir.py --path benchmarks/${{ matrix.os }}/
       - name: Create benchmark results json
         uses: benchmark-action/github-action-benchmark@v1
         with:
