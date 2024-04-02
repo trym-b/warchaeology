@@ -85,8 +85,4 @@ jobs:
           pathspec_error_handling: exitImmediately
           push: true
       - name: Verify that a commit has been pushed
-        run: |
-          if [ "${{ steps.commit-and-push.outputs.pushed }}" != "true" ]; then
-            echo "Commit failed"
-            exit 1
-          fi
+        run: python continuous-integration/check_push_status.py --push-status "${{ steps.commit-and-push.outputs.pushed }}"
