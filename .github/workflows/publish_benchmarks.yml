@@ -20,6 +20,9 @@ jobs:
       matrix:
         os: [ubuntu-22.04, windows-2022]
     runs-on: ${{ matrix.os }}
+    concurrency:
+      group: benchmark
+      cancel-in-progress: false
     steps:
       - name: Code Checkout
         uses: actions/checkout@v4
