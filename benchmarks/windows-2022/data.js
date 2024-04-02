@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1712038384798,
+  "lastUpdate": 1712039591350,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -30,6 +30,36 @@ window.BENCHMARK_DATA = {
             "value": 9815405,
             "unit": "ns/op",
             "extra": "148 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "committer": {
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
+          },
+          "distinct": true,
+          "id": "2b869b51471e5b0025cbd16f8c44ee27f34f8f7c",
+          "message": "debugging",
+          "timestamp": "2024-04-02T08:30:47+02:00",
+          "tree_id": "d94ffb8ae66e42ff3c5412477a8c14ce4ebffb4f",
+          "url": "https://github.com/trym-b/warchaeology/commit/2b869b51471e5b0025cbd16f8c44ee27f34f8f7c"
+        },
+        "date": 1712039584751,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkDummy",
+            "value": 8685164,
+            "unit": "ns/op",
+            "extra": "133 times\n4 procs"
           }
         ]
       }
