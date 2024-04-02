@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - test/benchmark-windows
 
 permissions:
   # deployments permission to deploy GitHub pages website
@@ -23,7 +24,7 @@ jobs:
       - name: Code Checkout
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: test/benchmark-windows
       - name: Setup Go
         uses: actions/setup-go@v5
         with:
