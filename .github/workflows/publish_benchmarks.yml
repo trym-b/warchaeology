@@ -47,6 +47,8 @@ jobs:
           fail-on-alert: true
           alert-threshold: "150%"
 
+      - name: tree
+        run: tree .
       - name: Create benchmark result directory
         run: python continuous-integration/create_dir.py --path benchmarks/${{ matrix.os }}/
       - name: Create benchmark results json
