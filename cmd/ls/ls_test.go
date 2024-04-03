@@ -35,8 +35,8 @@ func writeLongStrings(out *os.File) error {
 	if err != nil {
 		return err
 	}
-	for i := 0; i < 1000000; i++ {
-		_, err := out.WriteString("a")
+	for i := 0; i < 1000; i++ {
+		_, err := out.WriteString("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 		if err != nil {
 			return err
 		}
