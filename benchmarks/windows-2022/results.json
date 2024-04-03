@@ -1,5 +1,5 @@
 {
-  "lastUpdate": 1712122473740,
+  "lastUpdate": 1712122701035,
   "repoUrl": "https://github.com/trym-b/warchaeology",
   "entries": {
     "Go Benchmark": [
@@ -7,29 +7,35 @@
         "commit": {
           "author": {
             "email": "trym.bremnes@gmail.com",
-            "name": "Trym Bremnes",
+            "name": "Trym bremnes",
             "username": "trym-b"
           },
           "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
+            "email": "trym.bremnes@gmail.com",
+            "name": "Trym bremnes",
+            "username": "trym-b"
           },
           "distinct": true,
-          "id": "30f82bc4a4619681196aafa97845f9ea5d7c008a",
-          "message": "Merge pull request #124 from nlnwa/test/add-goleak-to-relevant-tests\n\ntest: avoid leaking goroutines",
-          "timestamp": "2024-04-02T20:08:55+02:00",
-          "tree_id": "41fb0c3f965d35eac666f476f15705cabe4837e1",
-          "url": "https://github.com/trym-b/warchaeology/commit/30f82bc4a4619681196aafa97845f9ea5d7c008a"
+          "id": "685f606a3784b851ece3dfbd0ca41a214720916b",
+          "message": "triger publish results on custom branch",
+          "timestamp": "2024-04-03T07:35:06+02:00",
+          "tree_id": "e1f5ad0f331a65a4e20d9ecaa469c19ee7ed3dad",
+          "url": "https://github.com/trym-b/warchaeology/commit/685f606a3784b851ece3dfbd0ca41a214720916b"
         },
-        "date": 1712122473739,
+        "date": 1712122701034,
         "tool": "go",
         "benches": [
           {
             "name": "BenchmarkDummy",
-            "value": 9645543,
+            "value": 9763407,
             "unit": "ns/op",
-            "extra": "127 times\n4 procs"
+            "extra": "123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkReadFileWithError",
+            "value": 8598157,
+            "unit": "ns/op",
+            "extra": "138 times\n4 procs"
           }
         ]
       }
