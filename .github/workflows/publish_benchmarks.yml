@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - silence-benchmark
 
 permissions:
   # deployments permission to deploy GitHub pages website
@@ -13,7 +14,7 @@ permissions:
   contents: write
 
 env:
-  DEFAULT_BRANCH: main
+  DEFAULT_BRANCH: silence-benchmark
 
 jobs:
   publish-benchmarks:
