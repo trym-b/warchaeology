@@ -1,6 +1,7 @@
 package ls
 
 import (
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -19,6 +20,7 @@ func TestConfigReadFileWithError(t *testing.T) {
 }
 
 func BenchmarkReadFileWithError(b *testing.B) {
+	os.Stdout = os.NewFile(0, os.DevNull)
 	testDataDir := filepath.Join("..", "..", "test-data")
 	warcWithErrors := filepath.Join(testDataDir, "samsung-with-error", "rec-33318048d933-20240317162652059-0.warc.gz")
 	config := &conf{}
